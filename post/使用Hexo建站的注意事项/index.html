@@ -1,0 +1,309 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>使用Hexo建站的注意事项 | Soda</title>
+<link rel="shortcut icon" href="https://zcill.github.io/favicon.ico?v=1739653835433">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcill.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="使用Hexo建站的注意事项 | Soda - Atom Feed" href="https://zcill.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-073HWK54DK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-073HWK54DK');
+</script>
+
+    <meta name="description" content="为什么使用Hexo建站
+首先要感谢公司同事70kg，我之前的博客也只是托管在gitpage上，而且没有博文的，使用的是jakyll。无意中看了70kg的博客，感觉很棒，就决定和他一样改用hexo建站。
+建站前戏
+因为我使用的是Mac，所以环..." />
+    <meta name="keywords" content="Hexo" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcill.github.io">
+  <img class="avatar" src="https://zcill.github.io/images/avatar.png?v=1739653835433" alt="">
+  </a>
+  <h1 class="site-title">
+    Soda
+  </h1>
+  <p class="site-description">
+    接近风的地方
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zcill" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/ZcillLocke" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2969293463" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/locker-zcill" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/zcillcoder" target="_blank">
+          <i class="ri-facebook-line"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              使用Hexo建站的注意事项
+            </h2>
+            <div class="post-info">
+              <span>
+                2015-12-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://zcill.github.io/tag/e2no9Z-NuV/" class="post-tag">
+                  # Hexo
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="为什么使用hexo建站">为什么使用Hexo建站</h3>
+<p>首先要感谢公司同事<a href="https://github.com/70kg">70kg</a>，我之前的博客也只是托管在gitpage上，而且没有博文的，使用的是jakyll。无意中看了70kg的博客，感觉很棒，就决定和他一样改用hexo建站。</p>
+<h3 id="建站前戏">建站前戏</h3>
+<p>因为我使用的是Mac，所以环境是OS X 10.11.2 EI Capitan</p>
+<p>首先要安装:</p>
+<ul>
+<li><a href="https://nodejs.org/en/"><code>Node.js</code></a></li>
+<li><a href="http://git-scm.com/"><code>Git</code></a></li>
+</ul>
+<h3 id="安装hexo">安装Hexo</h3>
+<p>如果已经安装Node.js和git的话，可以在终端打命令安装hexo了:</p>
+<p>​</p>
+<pre><code>$ npm install -g hexo-cli
+</code></pre>
+<blockquote>
+<h4 id="注意此处如果是os-x环境下报了error的话需要注意两点">注意：此处如果是OS X环境下报了error的话，需要注意两点:</h4>
+<ol>
+<li>
+<h5 id="command-line-tools">Command Line Tools</h5>
+<p>你要先去App Store安装Xcode，然后在** Preferences -&gt; Download -&gt; Command Line Tools -&gt; Install**这里去安装Command Line Tools</p>
+</li>
+<li>
+<h5 id="sudo模式下安装">sudo模式下安装</h5>
+<p>可能会出现npm安装之后提示让你用管理员模式安装的error，所以这个时候就要在sudo模式下安装，终端下:</p>
+</li>
+</ol>
+</blockquote>
+<pre><code>sudo npm install --unsafe-perm --verbose -g hexo
+</code></pre>
+<h3 id="初始化hexo">初始化Hexo</h3>
+<p>在终端下进入你喜爱的文件夹下，用命令对hexo初始化:</p>
+<pre><code>hexo init
+</code></pre>
+<p>​</p>
+<p>初始化完成之后，我们要安装依赖包</p>
+<pre><code>npm install
+</code></pre>
+<p>​</p>
+<blockquote>
+<p>注意：此处如果有问题，可能是安装依赖包出现问题，尝试在sudo模式下安装来解决问题:</p>
+</blockquote>
+<pre><code>sudo npm install
+</code></pre>
+<p>​</p>
+<h3 id="本地查看">本地查看</h3>
+<p>现在基本上建站完成了，可以在本地服务器跑一下看看效果了。终端在hexo文件目录下输入:</p>
+<p>​</p>
+<pre><code>hexo generate
+hexo server
+</code></pre>
+<p>​</p>
+<p>然后进入浏览器打开<code>localhost:4000</code>查看效果吧</p>
+<h3 id="绑定域名">绑定域名</h3>
+<p>因为我之前就已经在gitPage上建好博客了，所以只需要终端:</p>
+<pre><code>hexo deploy
+</code></pre>
+<p>​</p>
+<p>就可以把hexo提交上去，在gitPage上建站这方面的教程可以看<a href="http://zipperary.com/categories/hexo/">Zippera's blog</a>，使用Hexo建站说明很详细</p>
+<blockquote>
+<p>绑定域名需要在hexo本地source目录中添加CNAME文件，内容就是购买好的域名。CNAME内容:</p>
+</blockquote>
+<pre><code>zcill.com
+</code></pre>
+<p>这个时候使用命令:</p>
+<pre><code>hexo g
+hexo d
+</code></pre>
+<p>​</p>
+<p>就可以完成hexo的基本安装了</p>
+<h3 id="常用命令">常用命令</h3>
+<pre><code>hexo g == hexo generate
+hexo d == hexo deploy
+hexo s == hexo server
+hexo n &quot;我的第一篇博客&quot; == hexo new &quot;我的第一篇博客&quot;
+</code></pre>
+<p>这些命令可以使用简写，更加方便</p>
+<h3 id="感谢">感谢</h3>
+<ul>
+<li><a href="http://segmentfault.com/a/1190000002632530">hero 配置、部署 错误 - SegmentFault</a></li>
+<li><a href="http://zipperary.com/2013/05/28/hexo-guide-2/">hero 配置教程 -Zipperary's Blog</a></li>
+<li><a href="http://70kg.info">70kg.info</a></li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8hexo%E5%BB%BA%E7%AB%99">为什么使用Hexo建站</a></li>
+<li><a href="#%E5%BB%BA%E7%AB%99%E5%89%8D%E6%88%8F">建站前戏</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85hexo">安装Hexo</a>
+<ul>
+<li><a href="#%E6%B3%A8%E6%84%8F%E6%AD%A4%E5%A4%84%E5%A6%82%E6%9E%9C%E6%98%AFos-x%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%8A%A5%E4%BA%86error%E7%9A%84%E8%AF%9D%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%B8%A4%E7%82%B9">注意：此处如果是OS X环境下报了error的话，需要注意两点:</a>
+<ul>
+<li><a href="#command-line-tools">Command Line Tools</a></li>
+<li><a href="#sudo%E6%A8%A1%E5%BC%8F%E4%B8%8B%E5%AE%89%E8%A3%85">sudo模式下安装</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96hexo">初始化Hexo</a></li>
+<li><a href="#%E6%9C%AC%E5%9C%B0%E6%9F%A5%E7%9C%8B">本地查看</a></li>
+<li><a href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D">绑定域名</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">常用命令</a></li>
+<li><a href="#%E6%84%9F%E8%B0%A2">感谢</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcill.github.io/post/Mac环境下不使用BootCamp装双系统/">
+              <h3 class="post-title">
+                Mac环境下不使用BootCamp装双系统
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+   ❤ Powered by <a href=\"https://github.com/getgridea/gridea\" target=\"_blank\">Gridea</a> ｜ © 2015 - 本站由 <a href=\"https://github.com/zcill\">@Soda</a> 创建
+  <a class="rss" href="https://zcill.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

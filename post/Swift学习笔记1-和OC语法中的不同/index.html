@@ -1,0 +1,315 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Swift学习笔记1-和OC语法中的不同 | Soda</title>
+<link rel="shortcut icon" href="https://zcill.github.io/favicon.ico?v=1739653835433">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcill.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Swift学习笔记1-和OC语法中的不同 | Soda - Atom Feed" href="https://zcill.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-073HWK54DK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-073HWK54DK');
+</script>
+
+    <meta name="description" content="好久没写博客了，过年回家之后就不像在上海一个人呆着那样会每时每刻敲代码。家里事还是挺多了，快毕业了，就要开始被当做社会人来看待了，逢年过节已经要开始跑亲戚串门了。
+今天抽了点时间，把自己学习Swift中感觉和Objective-C不一样的地..." />
+    <meta name="keywords" content="Swift" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcill.github.io">
+  <img class="avatar" src="https://zcill.github.io/images/avatar.png?v=1739653835433" alt="">
+  </a>
+  <h1 class="site-title">
+    Soda
+  </h1>
+  <p class="site-description">
+    接近风的地方
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zcill" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/ZcillLocke" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2969293463" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/locker-zcill" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/zcillcoder" target="_blank">
+          <i class="ri-facebook-line"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Swift学习笔记1-和OC语法中的不同
+            </h2>
+            <div class="post-info">
+              <span>
+                2016-02-10
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://zcill.github.io/tag/AboCUZu5r6/" class="post-tag">
+                  # Swift
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>好久没写博客了，过年回家之后就不像在上海一个人呆着那样会每时每刻敲代码。家里事还是挺多了，快毕业了，就要开始被当做社会人来看待了，逢年过节已经要开始跑亲戚串门了。</p>
+<p><strong>今天抽了点时间，把自己学习Swift中感觉和Objective-C不一样的地方，大概列出来，供自己以后学习回顾方便。</strong></p>
+<h3 id="流程控制">流程控制</h3>
+<p>Swift中流程控制主要是<code>for-in</code> <code>switch</code>和Objective-C有比较大的区别，其他<code>while</code> <code>do-while</code>和OC可以说一样的。</p>
+<h4 id="for-in">for-in</h4>
+<p>⭐️<strong>Objective－C</strong></p>
+<p>我们现在需要打印5句话，需要定义一个i，写清楚条件才可以：</p>
+<pre><code>for (int i = 0; i &lt; 5; i++) {
+	NSLog(&quot;You are the apple of my eye&quot;);
+}
+</code></pre>
+<p>⭐️<strong>Swift</strong></p>
+<p>如果是Swift，可以直接用for in来代替：</p>
+<pre><code>
+// ... 是Swift中的闭区间
+// 1...5表示的意义是闭区间[1, 5]，说明1和5都包含
+
+for i in (1...5) {
+	print(&quot;You are the apple of my eye&quot;)
+}
+</code></pre>
+<p>再说一个Swift语法中的一个特殊的东西<code>_</code>，没错，这个下划线可以用来代替一些一次性的变量或者常量，像上面的代码，其实我们并不需要定义这个i，因为在循环中我们并没有使用到他。在Swift中可以简化成这样:</p>
+<pre><code>for _ in (1...5) {
+	print(&quot;You are the apple of my eye&quot;)
+}
+</code></pre>
+<h4 id="switch">switch</h4>
+<p>⭐️<strong>Objective－C</strong></p>
+<p>switch在C语言中，固定格式是要求使用<code>switch ()</code>，括号中需要填入的一般是整型值，C语言中的话，使用Boolean也可以。</p>
+<pre><code>// C语言中
+    switch (i) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            break;
+    }
+</code></pre>
+<p>⭐️<strong>Swift</strong></p>
+<p>在Swift中，switch要强大不少</p>
+<h5 id="格式上">格式上</h5>
+<p>不需要<code>( )</code>和<code>break</code></p>
+<pre><code>switch i {
+case 1:
+    print(&quot;111&quot;)
+    
+case 2:
+    print(&quot;222&quot;)
+    
+case 3:
+    print(&quot;333&quot;)
+    
+default:
+    print(&quot;default&quot;)
+}
+</code></pre>
+<p>不需要使用break去让他跳出这个switch，他运行完case之后会自动跳出。如果需要让他运行完case1之后接着运行case2我们需要在case中加入fallthrough就可以了，不过这样也是让他执行下一个case不能执行后面全部的case的:</p>
+<pre><code>	case 1:
+		print(&quot;111&quot;)
+		fallthrough
+	case 2:
+		print(&quot;222&quot;)
+</code></pre>
+<h5 id="对于condition的要求">对于condition的要求</h5>
+<p>不规定必须要整型，一些基本匹配要求他都可以满足，例如元组:</p>
+<pre><code>var Tom = (age:21, sex:&quot;male&quot;)
+
+switch Tom {
+	
+}
+</code></pre>
+<p>这样是完全可以的，使用元组内的元素内容去匹配case:</p>
+<pre><code>var Tom = (age:21, sex:&quot;male&quot;)
+
+switch Tom {
+case (20, _):
+    print(&quot;Tom's age is 20&quot;)
+    
+case (_, &quot;female&quot;):
+    print(&quot;Tom's sex is female&quot;)
+    
+case let (age, sex):
+    print(&quot;Tom's age is \(age), his sex is \(sex)&quot;)
+}
+</code></pre>
+<p>这里注意，case1中使用<code>(20, _)</code>是为了让他匹配时忽略Tom的sex元素内容，无论是什么sex，只要age为20就进入这个case；同样case2也是一个道理，无论age为多少，sex只要为female就进入这个case</p>
+<h5 id="对于case后的content">对于case后的content</h5>
+<p>这里关注一下第三个case:</p>
+<pre><code>case let (age, sex):
+	print(&quot;\(age) \(sex)&quot;)
+</code></pre>
+<p>这里的case后可以直接定义一个常量，用<code>let (age, sex)</code>来表示，这样的意思就是无论什么条件他都会进入这个case，类似于<code>(_, _)</code>，不一样的是，如果你在case中，需要使用元组中的元素内容，就可以使用let这种方法，不需要的话可以使用<code>(_, _)</code></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6">流程控制</a>
+<ul>
+<li><a href="#for-in">for-in</a></li>
+<li><a href="#switch">switch</a>
+<ul>
+<li><a href="#%E6%A0%BC%E5%BC%8F%E4%B8%8A">格式上</a></li>
+<li><a href="#%E5%AF%B9%E4%BA%8Econdition%E7%9A%84%E8%A6%81%E6%B1%82">对于condition的要求</a></li>
+<li><a href="#%E5%AF%B9%E4%BA%8Ecase%E5%90%8E%E7%9A%84content">对于case后的content</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcill.github.io/post/在OC项目中使用swift写的第三方库/">
+              <h3 class="post-title">
+                在Objective-C项目中使用swift写的第三方库
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+   ❤ Powered by <a href=\"https://github.com/getgridea/gridea\" target=\"_blank\">Gridea</a> ｜ © 2015 - 本站由 <a href=\"https://github.com/zcill\">@Soda</a> 创建
+  <a class="rss" href="https://zcill.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

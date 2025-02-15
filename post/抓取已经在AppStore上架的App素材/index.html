@@ -1,0 +1,231 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>抓取已经在AppStore上架的App素材 | Soda</title>
+<link rel="shortcut icon" href="https://zcill.github.io/favicon.ico?v=1739653835433">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcill.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="抓取已经在AppStore上架的App素材 | Soda - Atom Feed" href="https://zcill.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-073HWK54DK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-073HWK54DK');
+</script>
+
+    <meta name="description" content="zcill带你完整地抓取一个App的素材
+首先，你要到iTunes Store中去下载需要App的ipa安装包
+然后在这个目录下把ipa解压出来
+
+
+然后进入解压出来的文件目录下右击显示包内容
+
+到这里为止，是不是感觉包里面的图片好少啊，怎..." />
+    <meta name="keywords" content="iOS开发" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcill.github.io">
+  <img class="avatar" src="https://zcill.github.io/images/avatar.png?v=1739653835433" alt="">
+  </a>
+  <h1 class="site-title">
+    Soda
+  </h1>
+  <p class="site-description">
+    接近风的地方
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zcill" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/ZcillLocke" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2969293463" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/locker-zcill" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/zcillcoder" target="_blank">
+          <i class="ri-facebook-line"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              抓取已经在AppStore上架的App素材
+            </h2>
+            <div class="post-info">
+              <span>
+                2016-01-16
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://zcill.github.io/tag/TZWPHQCg8a/" class="post-tag">
+                  # iOS开发
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="zcill带你完整地抓取一个app的素材">zcill带你完整地抓取一个App的素材</h3>
+<p>首先，你要到iTunes Store中去下载需要App的ipa安装包<img src="http://7xq5gj.com1.z0.glb.clouddn.com/20160116_iTunesStore.png" alt="到iTunes Store去下载App" loading="lazy"></p>
+<p>然后在这个目录下把ipa解压出来</p>
+<figure data-type="image" tabindex="1"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/20160116_File1.png" alt="文件路径1" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/20160116_File2.png" alt="文件路径2" loading="lazy"></figure>
+<p>然后进入解压出来的文件目录下右击显示包内容</p>
+<figure data-type="image" tabindex="3"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/20160116_showFile.png" alt="显示包内容" loading="lazy"></figure>
+<p>到这里为止，是不是感觉包里面的图片好少啊，怎么全是xib编译后生成的nib文件，怎么没有图了？</p>
+<blockquote>
+<p>你们注意到那个Assets.car文件了么？是不是感觉很熟悉?</p>
+</blockquote>
+<figure data-type="image" tabindex="4"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/Snip20160116_7.png" alt="Xcode目录" loading="lazy"></figure>
+<p>这货怎么和Xcode中的Asset图片集一个名字？</p>
+<p>请使用这个软件来打开car文件<a href="https://github.com/alexzielenski/ThemeEngine">ThemeEngine</a>，在release目录下，下载最新版即可。</p>
+<figure data-type="image" tabindex="5"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/20160116_ThemeEngineDetail.png" alt="ThemeEngine" loading="lazy"></figure>
+<p>这个时候就可以打开并显示，可以像Adobe PhotoShop那样修改素材啦！</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#zcill%E5%B8%A6%E4%BD%A0%E5%AE%8C%E6%95%B4%E5%9C%B0%E6%8A%93%E5%8F%96%E4%B8%80%E4%B8%AAapp%E7%9A%84%E7%B4%A0%E6%9D%90">zcill带你完整地抓取一个App的素材</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcill.github.io/post/使用Hexo建站的注意事项/">
+              <h3 class="post-title">
+                使用Hexo建站的注意事项
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+   ❤ Powered by <a href=\"https://github.com/getgridea/gridea\" target=\"_blank\">Gridea</a> ｜ © 2015 - 本站由 <a href=\"https://github.com/zcill\">@Soda</a> 创建
+  <a class="rss" href="https://zcill.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

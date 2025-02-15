@@ -1,0 +1,438 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>【译】设计注册&amp;登录流程的22条规则 | Soda</title>
+<link rel="shortcut icon" href="https://zcill.github.io/favicon.ico?v=1739653835433">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcill.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="【译】设计注册&amp;登录流程的22条规则 | Soda - Atom Feed" href="https://zcill.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-073HWK54DK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-073HWK54DK');
+</script>
+
+    <meta name="description" content="最近会在Medium上看一些用研、产品体验相关的文章，大多是英文、繁体中文的，很多文章写得很赞，虽然Google Translate很强大，但是机翻还是有不少地方翻译错、翻译不明确的地方，所以自己决定翻译一些文章放到博客上，方便分享、自己收..." />
+    <meta name="keywords" content="Locke’s Product Note" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcill.github.io">
+  <img class="avatar" src="https://zcill.github.io/images/avatar.png?v=1739653835433" alt="">
+  </a>
+  <h1 class="site-title">
+    Soda
+  </h1>
+  <p class="site-description">
+    接近风的地方
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zcill" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/ZcillLocke" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2969293463" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/locker-zcill" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/zcillcoder" target="_blank">
+          <i class="ri-facebook-line"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              【译】设计注册&amp;登录流程的22条规则
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-03-01
+              </span>
+              <span>
+                18 min read
+              </span>
+              
+                <a href="https://zcill.github.io/tag/TYEQXplnw8/" class="post-tag">
+                  # Locke’s Product Note
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>最近会在Medium上看一些用研、产品体验相关的文章，大多是英文、繁体中文的，很多文章写得很赞，虽然Google Translate很强大，但是机翻还是有不少地方翻译错、翻译不明确的地方，所以自己决定翻译一些文章放到博客上，方便分享、自己收藏学习，翻译的过程中也是细细咀嚼产品的思考过程。</p>
+<hr>
+<blockquote>
+<p>原文 👉 22 rules for designing sign up &amp; sign in journeys  <a href="https://uxdesign.cc/22-rules-for-user-sign-up-sign-in-journeys-e0e863cba40a">22 rules for User Sign Up/Sign In journeys</a></p>
+</blockquote>
+<blockquote>
+<p>译者注：明明是23条，不知道为什么原文链接的标题上写的22 Rules...</p>
+</blockquote>
+<p>自电商以来，登录注册流程已一直存在，但是，在20年后的今天，我们在设计这一流程的时候仍然会犯错。大多数情况下，这些是由平台的产品形态或者交互偏好决定的。在互联网上，关于怎么设计一个正确的、用户友好并且安全的登录注册流程的争论日益激烈。</p>
+<p>登录/注册是用户享受App的一大门槛，糟糕的注册登录流程会造成大量的用户流失，用户体验也非常差。</p>
+<p>今天，我们将尝试解决这些问题，并且创建一套简单的规则，以便你在设计注册登录流程的时候使用。我们将从简单的注册开始，到后面的登录操作慢慢复杂化。</p>
+<hr>
+<h2 id="注册">注册</h2>
+<h3 id="规则1-仅询问创建账户所需的基本信息">规则1 - 仅询问创建账户所需的基本信息</h3>
+<p>只提供一个名字、邮箱和密码就可以创建一个账户。</p>
+<p>如果团队有比较强的SMS营销能力，也可以让用户提供手机号码，但是不要设置为必填项，可以稍后再获取。</p>
+<p>如果用户走注册流程进入到了第二页，对获取这名用户有很大帮助。</p>
+<blockquote>
+<p>译者注（Soda觉得）：是否获取用户的手机号，取决于产品形态和内容审查制度，并不是说获取用户就一定是为了营销，其实有的时候也是为了更好地服务用户，解决一些痛点和痒点。（e.g. 大众点评登录账号的话，可以打卡、评价、给店铺评分，可以收藏店铺、景点）</p>
+</blockquote>
+<h3 id="规则2-标记必填项并分组">规则2 - 标记必填项并分组</h3>
+<p>每个必填字段都应该被明确标记出来。</p>
+<p>使用*表示必填项可能不一定真的有用，但是将非必填项标记为Optional要比不标记要好。</p>
+<p>页面上的表单先是必填项，往下是可选项。</p>
+<figure data-type="image" tabindex="1"><img src="https://miro.medium.com/max/3328/1*O01aZXEvuCcodOc4IYcmyw.png" alt="https://miro.medium.com/max/3328/1*O01aZXEvuCcodOc4IYcmyw.png" loading="lazy"></figure>
+<p>正确的字段分组和字段标识</p>
+<p>从HTML的角度来看，明确指出输入的字段可以帮助浏览器完成自动填充信息（通过自动完成标准-参见<a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#inappropriate-for-the-control">此处</a>）。</p>
+<blockquote>
+<p>译者注：PC端的网页注册流程中，比较多的存在必填项和*的使用，不过在移动端当中，更多的是“跳过”。</p>
+</blockquote>
+<h3 id="规则3-标出密码规则">规则3 - 标出密码规则</h3>
+<p>在用户设置密码的时候，指出密码的强度，但是如果密码很奇怪，请不要阻止用户注册。原因很简单——如果用户必须要输入一个（自己不常用）的新密码，那么下次再登录的时候，可能会忘记这个密码，就会放弃登录。（造成用户流失）</p>
+<h3 id="规则4-对输入的字段做实时验证并指出错误">规则4 - 对输入的字段做实时验证并指出错误</h3>
+<p>最讨厌的就是填完了所有信息，（点击提交）之后才提示哪些字段不符合规则，然后之前填好的密码又要重新填（美其名曰：安全性）。</p>
+<figure data-type="image" tabindex="2"><img src="https://miro.medium.com/max/1000/0*dL3LIxIax8ItE8ro.png" alt="https://miro.medium.com/max/1000/0*dL3LIxIax8ItE8ro.png" loading="lazy"></figure>
+<p>使用对用户友好的错误提示是一种防止用户流失的好方法。</p>
+<p>大多数内联表单验证都会在我输入过程中检查错误，这是应该使用的逻辑：</p>
+<ol>
+<li>等待输入框的onFocusOut事件；</li>
+<li>验证字段；</li>
+<li>如果有错误，明确指出错误，但是不要把注意力集中在该字段上（填写过程中，不要打断用户流程）；</li>
+<li>当用户将注意力放在错误的字段上（并且字段不为空）时，请在每次触发onKeyUp事件的时候检查字段是否正确，如果字段正确了，则将提示变为绿色。</li>
+</ol>
+<p>这样可以避免验证过程中的任何麻烦。</p>
+<blockquote>
+<p>译者注：onFocusOut和onKeyUp是网页开发中的两个事件：</p>
+<p><strong>onFocusOut</strong>：在input 输入框即将失去焦点时触发。e.g. 当光标从输入框A中移动到输入框B时，输入框A的onFocusOut事件就会被触发；<br>
+<strong>onKeyUp</strong>：用户按下按键后，松开时触发。e.g. 用户在“昵称”框中输入“SODA”，按下“S”然后松开“S”时触发onKeyUp，相当于输入完“SODA”后，其实是触发了四次OnKeyUp</p>
+</blockquote>
+<h3 id="规则5-不要因为用户未验证邮箱就限制其访问账户">规则5 - 不要因为用户未验证邮箱就限制其访问账户</h3>
+<p>除非这是一项业务要求，否则不要仅仅因为用户未单击你发送的验证链接而阻止其访问账户。</p>
+<p>对于电商尤其如此——无需电商网站去验证邮箱地址。对于在线产品，在验证邮箱之前，可以限制一些用户操作。</p>
+<p>我发现提供3-5天时间让用户再去验证电子邮件往往会获得更多收益。最好再用户进入门户网站并且做了某些操作后再要求他验证邮箱。</p>
+<h3 id="规则6-不要只表明该邮箱已经注册过了还要提供后续选项">规则6 - 不要只表明该邮箱已经注册过了，还要提供后续选项</h3>
+<p>如果用户输入已经注册过的邮箱，则不要仅告诉用户这个账户已经存在，这是死胡同。最好可以提供原因和操作（比如验证码登录、点击去登录页面、忘记密码等），用户可以采取以下措施：</p>
+<figure data-type="image" tabindex="3"><img src="https://miro.medium.com/max/3396/1*SsbNkY1FVXpTBUP3Hloh2Q.png" alt="https://miro.medium.com/max/3396/1*SsbNkY1FVXpTBUP3Hloh2Q.png" loading="lazy"></figure>
+<p>Give users an out for every error they get!</p>
+<p>直接将用户带到登录页面的网站太可怕了！用户喜欢有“感谢注册”这样的页面，但是他们现在却面临着另一种糟糕的形式。</p>
+<p>如果可以的话，尝试对邮箱进行内联验证（在用户输入邮箱后，对账户进行验证），可以为用户省去输入其他信息的麻烦。</p>
+<p>🔐安全说明：我知道为blackhatter提供API用来检查数据库中存在哪些电子邮件是愚蠢的，但是如果你足够聪明，可以增加一些限制（防止一直查询数据库），这样可以为许多用户省去不必要的麻烦。</p>
+<h3 id="规则7-社交登录sso应成为常态">规则7 - 社交登录（SSO）应成为常态</h3>
+<p>越来越多的站点都提供不止一种登录方式，对于电商或体验产品的简单注册，Facebook / Twitter / Google 注册是最容易做到的。但是在这些规则中，应当遵循一些子规则：</p>
+<ol>
+<li>
+<p><strong>覆盖范围</strong></p>
+<p>不要在交易网站上使用Linkdin注册；</p>
+<p>如果用户所在的地区有使用广泛的社交工具，比如微信，那么可以使用微信登录/注册。</p>
+</li>
+<li>
+<p><strong>优先级</strong></p>
+<p>如果可以的话，使用最流行的注册方式，或者用你最喜欢的注册方式。</p>
+</li>
+<li>
+<p><strong>合并</strong></p>
+<p>如果用户使用邮箱或者其他的SSO方式进行注册，并且想要绑定其他SSO方式，请允许用户这么做（只要电子邮件匹配）。</p>
+</li>
+<li>
+<p><strong>提醒</strong></p>
+<p>如果用户使用SSO方式注册过，又尝试通过电子邮件再次进行注册，最好可以提示他使用的SSO方式。在规则6中，我们可以在登录选择或重置密码的地方提示“你使用Facebook登录过”。</p>
+</li>
+<li>
+<p><strong>隐私</strong></p>
+<p>最好可以表明用户使用SSO登录时你仅用来授权账户和使用必填字段，而且不会利用用户的社交账户发布任何post。</p>
+</li>
+</ol>
+<h3 id="规则8-按下tab键可转到下个字段">规则8 - 按下Tab键可转到下个字段</h3>
+<p>就像听起来一样简单，但有时用户按了tab却不会进入到下一个字段。</p>
+<blockquote>
+<p>译者注：这里原文说的是网页中的操作，在移动端的话，最好可以使用原生键盘右下角的“下一项”，这样用户在填写完一个字段后，可以点击“下一项”进入下一个field</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>建议1 - 用户邮箱应该作为登录账户的主键</strong></p>
+<p>我进入了一个网站，“咦，要用户名登录，我用户是啥？”。我今天突然想用“ThorButOaks69”作为用户名，但是我会记得它的大小写、数字组合吗？我只记得我的电子邮件，最好可以在我登录之后让我自己设置用户名。</p>
+<p>这只是一个建议 - 根据具体的系统和需求可能不一样。</p>
+</li>
+<li>
+<p><strong>建议2 - 成功注册后，发送欢迎邮件</strong></p>
+<p>这是您的欢迎邮件应该包含的内容：有关他们已经注册的网站，他们可以使用该账户进行的操作，以及他们在网站中可以用到的信息。如果可以的话，添加电子邮件验证，让你的CRM团队满意。</p>
+</li>
+</ol>
+<h2 id="登录">登录</h2>
+<h3 id="规则9-对电子邮件字段做实时验证">规则9 - 对电子邮件字段做实时验证</h3>
+<p>有很多网站都没有用电子邮件字段的格式验证（标准正则表达式之一）。</p>
+<p>类似规则6做一些验证</p>
+<h3 id="规则10-重设密码应将邮箱用户名带到新表格中">规则10 - 重设密码应将邮箱（用户名）带到新表格中</h3>
+<p>如果用户输入了电子邮件，并且你告诉他密码不正确，那他去重置密码的时候不用再次输入电子邮件。如果可以的话，让转换变得快速而且简单——在用户单击该选项后，隐藏密码字段，并将按钮改为“重置密码”。</p>
+<figure data-type="image" tabindex="4"><img src="https://miro.medium.com/max/2710/1*Z1sf3pYt5HMuCe3T5c1grg.gif" alt="https://miro.medium.com/max/2710/1*Z1sf3pYt5HMuCe3T5c1grg.gif" loading="lazy"></figure>
+<p>电子邮件可以持续平稳过度</p>
+<h3 id="规则11-在第三次尝试时提示重置密码">规则11 - 在第三次尝试时提示重置密码</h3>
+<p>如果用户尝试多次输入密码，可以提示一个“单击以重置密码”的提示，不要让他们点击其他按钮。</p>
+<figure data-type="image" tabindex="5"><img src="https://miro.medium.com/max/3736/1*bY84zradwye_EzkOD8r3Hg.png" alt="https://miro.medium.com/max/3736/1*bY84zradwye_EzkOD8r3Hg.png" loading="lazy"></figure>
+<h3 id="规则12-发送密码重置链接而不是系统生成的密码">规则12 - 发送密码重置链接，而不是系统生成的密码</h3>
+<p>系统生成的密码让用户在重置密码的流程中增加了步骤，重置密码流程应该很简单：</p>
+<ol>
+<li>用户选择重置密码</li>
+<li>用户收到一封带有重置密码链接的邮件</li>
+<li>用户点击链接</li>
+<li>用户两次输入密码</li>
+<li>用户有权访问该账户</li>
+</ol>
+<h3 id="规则13-如果用户需要允许密码管理器获取用户的登录凭据">规则13 - 如果用户需要，允许密码管理器获取用户的登录凭据</h3>
+<p>现在大多数用户都会使用密码管理器（Chrome、1Password等），只有少数人仍然记得他们使用的一百多个站点的电子邮件/密码组合。密码管理器以及发展到甚至可以感知用户重置了密码来更新文件库。</p>
+<h3 id="规则14-在移动应用上允许用户使用其设备上的身份验证登录">规则14 - 在移动应用上，允许用户使用其设备上的身份验证登录</h3>
+<p>如果你们产品有手机App，那么还强制使用复杂的电子邮件/密码组合或者SSO授权登录会很荒谬。大多数设备都使用TouchID或者FaceID来验证用户身份。流程是这样的：</p>
+<ol>
+<li>成功登录后，提示用户使用设备上的身份验证，以后则可以使用TouchID等进行后续登录，同时也为用户提供不再显示该消息的选项；</li>
+<li>如果用户选择这个方式，就继续并完成获取身份验证的流程；</li>
+<li>在下一次登录的时候，提供TouchID/FaceID作为登录SSO的选项，或者在身份验证的时候弹出这个模式。</li>
+</ol>
+<h3 id="规则15-sso作为登录选项">规则15 - SSO作为登录选项</h3>
+<p>对于规则7的SSO登录，需要有一些补充：</p>
+<ol>
+<li>如果用户尝试使用一个系统中 <strong>不存在</strong> 的邮箱账号去进行SSO登录，那么可以提示用户是否要用同样的邮箱和密码去注册一个新的账户；</li>
+<li>如果用户尝试使用一个系统中 <strong>已经存在</strong> 的邮箱账号去进行SSO登录，验证身份之后将这个（以SSO登录的）账号添加到数据库中，成功登录后，将其告知用户；</li>
+<li>尽量不要提供超过3个SSO选项，否则用户会感到困惑，我不记得我到底用Facebook还是Google、Twitter（或者是其他方式登录的这个App）；</li>
+<li>移动应用App的SSO - <strong>请勿</strong> 打开一个Facebook / Google的网页再让我去输入账号密码登录。大多数用户（使用SSO登录的时候）因为有安装Facebook / Google，不想输入用户名密码组合只是为了方便。</li>
+</ol>
+<h3 id="规则16-对于包含敏感信息付款信息的网站两步验证应该成为规范">规则16 - 对于包含敏感信息&amp;付款信息的网站，两步验证应该成为规范</h3>
+<p>对于存储信用卡令牌的网站不是非常适用，但是如果也启用两步验证当然是更好的。</p>
+<p>这是针对那些通过信用卡 / 钱包余额存储资金的网站，当然，并非所有用户都拥有钱包，对于那些（如果出现意外）可能会损失金钱的用户，开启两步验证。例如，我刚刚注册，但是没有钱包余额，那就不用开启两步验证。</p>
+<p>在这两个步骤中，最佳组合是：</p>
+<ol>
+<li>电子邮件+手机</li>
+<li>电子邮件+电子邮件</li>
+<li>电子邮件+推送通知</li>
+</ol>
+<p>按照我的经验，最快的是电子邮件+推送，它始终有效，并且简单。</p>
+<p>（译者注：这里是原作者的吐槽）Microsoft身份验证添加了一个非常愚蠢的层，就是在数字列表中点击特定的数字。如果我有两个可验证设备的话，那就让我点一下批准消息，不要让我解数独题！</p>
+<blockquote>
+<p>译者注：金融领域的安全风控，我也不太了解，应该有很多深入的风控方式。这里是作者在客户端/网页的交互上提供一个可用方式。</p>
+</blockquote>
+<h3 id="规则17-在进行更深的流程时要了解到用户的认知负担并且设计退出以解决错误">规则17 - 在进行更深的流程时要了解到用户的认知负担，并且设计“退出”以解决错误</h3>
+<p>随着身份验证流程变得复杂，越来越少的用户还继续按照产品的流程路径往前走。如果用户最终陷入困境，请提供一个解决方法，给他们退到最初的电子邮件/密码方法的选择。</p>
+<h3 id="规则18-永久登录应该成为不敏感网站的规范">规则18 - 永久登录应该成为不敏感网站的规范</h3>
+<p>除非你的网站包含敏感信息，否则请允许永久登录。对于电商网站，更应该如此。永久登录使用户可以（很方便地）体验网站并且做一些用户操作。如果你的网站在一定时间后自动登出用户，那你就是破坏用户体验的罪犯。</p>
+<p>会话可能会过期，但是保留用户操作（比如添加到购物车的项目），你可以在会话到期后，通过提示密码登录来限制用户的一些操作。在这方面上，Amazon做得非常好。</p>
+<p>如果你的项目有移动应用App，也在一天之后让我登出了，shame on you。在没有使用公共设备登录App的时候，应该保留用户永久登录的状态。</p>
+<blockquote>
+<p>译者注：在这一点上，译者不敢苟同，我觉得可以做长期登录的状态，永久的话，不一定适合所有App。</p>
+</blockquote>
+<h2 id="流程内登录规则">流程内登录规则</h2>
+<p>有的时候，你的项目需要用户登录以简化后续步骤。我要走一下结账、检查订单状态和删除购物车的电商流程，但是在此之前，如果你有移动应用App，请确保电子邮件/短信中的所有链接都是深层链接，我不想在已经登录的App上（再次登录）体验无聊的浏览器之旅。</p>
+<h3 id="规则19-在不用登录就可以完成所有流程的情况下不要强迫用户登录">规则19 - 在不用登录就可以完成所有流程的情况下，不要强迫用户登录</h3>
+<p>在结账过程中，第一步一般是用户登录，视觉上考虑提供访客结账选项，该流程可以是：</p>
+<ol>
+<li>询问用户的邮箱</li>
+<li>进入到下一步的同时，检查邮箱是否已经存在。如果用户有一个账户，请提示他们登录，并显示一条消息，告诉用户登录会更简单（记得检查账户中是否已经关联了送货地址和用来支付的卡）。<em>Note - 我们不会在同一个步骤上显示信息，用户的期望是继续前进-达成目标。</em></li>
+<li>如果用户选择登录，请提供表单和SSO选项给用户。如果你知道用户上次使用SSO，那就放SSO</li>
+</ol>
+<p>选项和表单（的顺序）。</p>
+<figure data-type="image" tabindex="6"><img src="https://miro.medium.com/max/3452/1*4g_oZfrSCKNRPuTk2AizYg.png" alt="https://miro.medium.com/max/3452/1*4g_oZfrSCKNRPuTk2AizYg.png" loading="lazy"></figure>
+<p>流程中登录的选项顺序</p>
+<p><em>Note - 这里没有提供忘记密码的功能，用户不需要这个也可以继续流程。</em></p>
+<ol start="4">
+<li>如果用户登录失败，礼貌地告诉用户不要担心，我们会把交易绑定到他们的账户。（译者注：我就很奇怪了，登录都失败了，怎么绑定？）</li>
+</ol>
+<h3 id="规则20-登录后如果用户有上次会话中的项目覆盖掉它">规则20 - 登录后，如果用户有上次会话中的项目，覆盖掉它！</h3>
+<p>想象一下，如果你在便利店的结账台提供会员卡时，服务员在你的账单里又添加了另外4项你上次来这里没买的商品，你不讨厌吗？</p>
+<p>如果你在结账流程中发现用户先前的购物车中有物品，请在“谢谢”页面上显示这些信息，并显示一条消息：“您先前的购物车中有这些商品，您现在要购买吗？”。届时，请将这些物品添加到新的购物车中，然后将其带到购物车页面，在这个页面上，他们选择的地址、付款方式、总额都会显示出来，他们应该能够选择要买的东西，简化流程。</p>
+<blockquote>
+<p>译者注：这位老哥这条规则里写的内容我不太能看得懂，他这里写的电商流程好像和淘宝的不太一样。不过这条规则想说的应该就是，对于之前的一些用户内容，我们可以做一些提示和引导，更好地理解用户的需求。</p>
+</blockquote>
+<h3 id="规则21-在完成主要流程后提示用户创建账户">规则21 - 在完成主要流程后提示用户创建账户</h3>
+<p>如果用户没有账户，那最好要求他们在“订单确认”的页面上为其创建账户密码。不要让用户反复提交重复信息，提示用户去创建账户来保存他们的信息。</p>
+<h3 id="规则22-订单状态链接不用登录">规则22 - 订单状态链接不用登录</h3>
+<p>用户可以通过两种方式检查其订单状态：</p>
+<ol>
+<li>邮件中的链接-订单状态链接应与每个订单确认邮件和订单更新邮件一起发送</li>
+<li>网站上允许电子邮件+订单号组合的表格</li>
+</ol>
+<p>有关订单的其他信息可以保留在登录提示之后，确认登录后，再让他们去到原来想去的页面。</p>
+<h3 id="规则23-被遗弃的购物车链接不应该提示登录">规则23 - 被遗弃的购物车链接不应该提示登录</h3>
+<p>废弃的购物车流程很复杂-用户通过已经登录的浏览器里访问链接，或者使用URL中的SSID进行会话重新创建。从技术角度来看，事情真的变得很复杂。</p>
+<blockquote>
+<p>译者注：以上就是23条规则，作者应该是一名做电商相关的产品经理，所以他在举例的时候用的大多都是电商类的登录注册流程。对于我来说，即使不是电商，里面的这些规则，也是在设计产品的时候需要考虑和注意的地方。但是也不必全部照做，选择适合自己产品的规则，并且实验，才是正确的做法。</p>
+</blockquote>
+<p>大多数用户的期望都是既定的。作为产品经理，我们在实施这些规则的技术方面存在一定的局限性，但是我可以向您保证，实施这些更改会使您的网站/应用获得用户体验，并提高转换率。在大多数这些规则上尝试A/B Test，并查看用户的反应。</p>
+<p><strong>感谢您的阅读！Thank you for reading!</strong></p>
+<hr>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%B3%A8%E5%86%8C">注册</a>
+<ul>
+<li><a href="#%E8%A7%84%E5%88%991-%E4%BB%85%E8%AF%A2%E9%97%AE%E5%88%9B%E5%BB%BA%E8%B4%A6%E6%88%B7%E6%89%80%E9%9C%80%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF">规则1 - 仅询问创建账户所需的基本信息</a></li>
+<li><a href="#%E8%A7%84%E5%88%992-%E6%A0%87%E8%AE%B0%E5%BF%85%E5%A1%AB%E9%A1%B9%E5%B9%B6%E5%88%86%E7%BB%84">规则2 - 标记必填项并分组</a></li>
+<li><a href="#%E8%A7%84%E5%88%993-%E6%A0%87%E5%87%BA%E5%AF%86%E7%A0%81%E8%A7%84%E5%88%99">规则3 - 标出密码规则</a></li>
+<li><a href="#%E8%A7%84%E5%88%994-%E5%AF%B9%E8%BE%93%E5%85%A5%E7%9A%84%E5%AD%97%E6%AE%B5%E5%81%9A%E5%AE%9E%E6%97%B6%E9%AA%8C%E8%AF%81%E5%B9%B6%E6%8C%87%E5%87%BA%E9%94%99%E8%AF%AF">规则4 - 对输入的字段做实时验证并指出错误</a></li>
+<li><a href="#%E8%A7%84%E5%88%995-%E4%B8%8D%E8%A6%81%E5%9B%A0%E4%B8%BA%E7%94%A8%E6%88%B7%E6%9C%AA%E9%AA%8C%E8%AF%81%E9%82%AE%E7%AE%B1%E5%B0%B1%E9%99%90%E5%88%B6%E5%85%B6%E8%AE%BF%E9%97%AE%E8%B4%A6%E6%88%B7">规则5 - 不要因为用户未验证邮箱就限制其访问账户</a></li>
+<li><a href="#%E8%A7%84%E5%88%996-%E4%B8%8D%E8%A6%81%E5%8F%AA%E8%A1%A8%E6%98%8E%E8%AF%A5%E9%82%AE%E7%AE%B1%E5%B7%B2%E7%BB%8F%E6%B3%A8%E5%86%8C%E8%BF%87%E4%BA%86%E8%BF%98%E8%A6%81%E6%8F%90%E4%BE%9B%E5%90%8E%E7%BB%AD%E9%80%89%E9%A1%B9">规则6 - 不要只表明该邮箱已经注册过了，还要提供后续选项</a></li>
+<li><a href="#%E8%A7%84%E5%88%997-%E7%A4%BE%E4%BA%A4%E7%99%BB%E5%BD%95sso%E5%BA%94%E6%88%90%E4%B8%BA%E5%B8%B8%E6%80%81">规则7 - 社交登录（SSO）应成为常态</a></li>
+<li><a href="#%E8%A7%84%E5%88%998-%E6%8C%89%E4%B8%8Btab%E9%94%AE%E5%8F%AF%E8%BD%AC%E5%88%B0%E4%B8%8B%E4%B8%AA%E5%AD%97%E6%AE%B5">规则8 - 按下Tab键可转到下个字段</a></li>
+</ul>
+</li>
+<li><a href="#%E7%99%BB%E5%BD%95">登录</a>
+<ul>
+<li><a href="#%E8%A7%84%E5%88%999-%E5%AF%B9%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E5%AD%97%E6%AE%B5%E5%81%9A%E5%AE%9E%E6%97%B6%E9%AA%8C%E8%AF%81">规则9 - 对电子邮件字段做实时验证</a></li>
+<li><a href="#%E8%A7%84%E5%88%9910-%E9%87%8D%E8%AE%BE%E5%AF%86%E7%A0%81%E5%BA%94%E5%B0%86%E9%82%AE%E7%AE%B1%E7%94%A8%E6%88%B7%E5%90%8D%E5%B8%A6%E5%88%B0%E6%96%B0%E8%A1%A8%E6%A0%BC%E4%B8%AD">规则10 - 重设密码应将邮箱（用户名）带到新表格中</a></li>
+<li><a href="#%E8%A7%84%E5%88%9911-%E5%9C%A8%E7%AC%AC%E4%B8%89%E6%AC%A1%E5%B0%9D%E8%AF%95%E6%97%B6%E6%8F%90%E7%A4%BA%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81">规则11 - 在第三次尝试时提示重置密码</a></li>
+<li><a href="#%E8%A7%84%E5%88%9912-%E5%8F%91%E9%80%81%E5%AF%86%E7%A0%81%E9%87%8D%E7%BD%AE%E9%93%BE%E6%8E%A5%E8%80%8C%E4%B8%8D%E6%98%AF%E7%B3%BB%E7%BB%9F%E7%94%9F%E6%88%90%E7%9A%84%E5%AF%86%E7%A0%81">规则12 - 发送密码重置链接，而不是系统生成的密码</a></li>
+<li><a href="#%E8%A7%84%E5%88%9913-%E5%A6%82%E6%9E%9C%E7%94%A8%E6%88%B7%E9%9C%80%E8%A6%81%E5%85%81%E8%AE%B8%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9A%84%E7%99%BB%E5%BD%95%E5%87%AD%E6%8D%AE">规则13 - 如果用户需要，允许密码管理器获取用户的登录凭据</a></li>
+<li><a href="#%E8%A7%84%E5%88%9914-%E5%9C%A8%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E4%B8%8A%E5%85%81%E8%AE%B8%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8%E5%85%B6%E8%AE%BE%E5%A4%87%E4%B8%8A%E7%9A%84%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E7%99%BB%E5%BD%95">规则14 - 在移动应用上，允许用户使用其设备上的身份验证登录</a></li>
+<li><a href="#%E8%A7%84%E5%88%9915-sso%E4%BD%9C%E4%B8%BA%E7%99%BB%E5%BD%95%E9%80%89%E9%A1%B9">规则15 - SSO作为登录选项</a></li>
+<li><a href="#%E8%A7%84%E5%88%9916-%E5%AF%B9%E4%BA%8E%E5%8C%85%E5%90%AB%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E4%BB%98%E6%AC%BE%E4%BF%A1%E6%81%AF%E7%9A%84%E7%BD%91%E7%AB%99%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%81%E5%BA%94%E8%AF%A5%E6%88%90%E4%B8%BA%E8%A7%84%E8%8C%83">规则16 - 对于包含敏感信息&amp;付款信息的网站，两步验证应该成为规范</a></li>
+<li><a href="#%E8%A7%84%E5%88%9917-%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%9B%B4%E6%B7%B1%E7%9A%84%E6%B5%81%E7%A8%8B%E6%97%B6%E8%A6%81%E4%BA%86%E8%A7%A3%E5%88%B0%E7%94%A8%E6%88%B7%E7%9A%84%E8%AE%A4%E7%9F%A5%E8%B4%9F%E6%8B%85%E5%B9%B6%E4%B8%94%E8%AE%BE%E8%AE%A1%E9%80%80%E5%87%BA%E4%BB%A5%E8%A7%A3%E5%86%B3%E9%94%99%E8%AF%AF">规则17 - 在进行更深的流程时要了解到用户的认知负担，并且设计“退出”以解决错误</a></li>
+<li><a href="#%E8%A7%84%E5%88%9918-%E6%B0%B8%E4%B9%85%E7%99%BB%E5%BD%95%E5%BA%94%E8%AF%A5%E6%88%90%E4%B8%BA%E4%B8%8D%E6%95%8F%E6%84%9F%E7%BD%91%E7%AB%99%E7%9A%84%E8%A7%84%E8%8C%83">规则18 - 永久登录应该成为不敏感网站的规范</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%81%E7%A8%8B%E5%86%85%E7%99%BB%E5%BD%95%E8%A7%84%E5%88%99">流程内登录规则</a>
+<ul>
+<li><a href="#%E8%A7%84%E5%88%9919-%E5%9C%A8%E4%B8%8D%E7%94%A8%E7%99%BB%E5%BD%95%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%AE%8C%E6%88%90%E6%89%80%E6%9C%89%E6%B5%81%E7%A8%8B%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%8D%E8%A6%81%E5%BC%BA%E8%BF%AB%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95">规则19 - 在不用登录就可以完成所有流程的情况下，不要强迫用户登录</a></li>
+<li><a href="#%E8%A7%84%E5%88%9920-%E7%99%BB%E5%BD%95%E5%90%8E%E5%A6%82%E6%9E%9C%E7%94%A8%E6%88%B7%E6%9C%89%E4%B8%8A%E6%AC%A1%E4%BC%9A%E8%AF%9D%E4%B8%AD%E7%9A%84%E9%A1%B9%E7%9B%AE%E8%A6%86%E7%9B%96%E6%8E%89%E5%AE%83">规则20 - 登录后，如果用户有上次会话中的项目，覆盖掉它！</a></li>
+<li><a href="#%E8%A7%84%E5%88%9921-%E5%9C%A8%E5%AE%8C%E6%88%90%E4%B8%BB%E8%A6%81%E6%B5%81%E7%A8%8B%E5%90%8E%E6%8F%90%E7%A4%BA%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA%E8%B4%A6%E6%88%B7">规则21 - 在完成主要流程后提示用户创建账户</a></li>
+<li><a href="#%E8%A7%84%E5%88%9922-%E8%AE%A2%E5%8D%95%E7%8A%B6%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%8D%E7%94%A8%E7%99%BB%E5%BD%95">规则22 - 订单状态链接不用登录</a></li>
+<li><a href="#%E8%A7%84%E5%88%9923-%E8%A2%AB%E9%81%97%E5%BC%83%E7%9A%84%E8%B4%AD%E7%89%A9%E8%BD%A6%E9%93%BE%E6%8E%A5%E4%B8%8D%E5%BA%94%E8%AF%A5%E6%8F%90%E7%A4%BA%E7%99%BB%E5%BD%95">规则23 - 被遗弃的购物车链接不应该提示登录</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcill.github.io/post/hey-guy-makeup-yourself/">
+              <h3 class="post-title">
+                男生不完全护肤（战痘）指南
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+   ❤ Powered by <a href=\"https://github.com/getgridea/gridea\" target=\"_blank\">Gridea</a> ｜ © 2015 - 本站由 <a href=\"https://github.com/zcill\">@Soda</a> 创建
+  <a class="rss" href="https://zcill.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

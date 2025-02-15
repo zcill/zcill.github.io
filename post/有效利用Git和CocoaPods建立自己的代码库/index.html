@@ -1,0 +1,358 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>有效利用Git和CocoaPods建立自己的代码库 | Soda</title>
+<link rel="shortcut icon" href="https://zcill.github.io/favicon.ico?v=1739653835433">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcill.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="有效利用Git和CocoaPods建立自己的代码库 | Soda - Atom Feed" href="https://zcill.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-073HWK54DK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-073HWK54DK');
+</script>
+
+    <meta name="description" content="每个coder在漫长的coding过程中，都会有自己常用的一套工具类方案，一些工具类和一些category，如果把这些整理一下提交到cocoapods不仅会方便自己每次使用，而且给开源社区做了贡献，也会帮助自己完善自己的工具类。
+在repo..." />
+    <meta name="keywords" content="iOS开发" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcill.github.io">
+  <img class="avatar" src="https://zcill.github.io/images/avatar.png?v=1739653835433" alt="">
+  </a>
+  <h1 class="site-title">
+    Soda
+  </h1>
+  <p class="site-description">
+    接近风的地方
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zcill" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/ZcillLocke" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2969293463" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/locker-zcill" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/zcillcoder" target="_blank">
+          <i class="ri-facebook-line"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              有效利用Git和CocoaPods建立自己的代码库
+            </h2>
+            <div class="post-info">
+              <span>
+                2016-08-17
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://zcill.github.io/tag/TZWPHQCg8a/" class="post-tag">
+                  # iOS开发
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>每个coder在漫长的coding过程中，都会有自己常用的一套工具类方案，一些工具类和一些category，如果把这些整理一下提交到cocoapods不仅会方便自己每次使用，而且给开源社区做了贡献，也会帮助自己完善自己的工具类。</p>
+<h3 id="在repo目录下生成podspec文件">在repo目录下生成podspec文件</h3>
+<pre><code>pod spec create ZCTouchID
+
+</code></pre>
+<p>生成了一个podspec文件，内容格式是固定好的</p>
+<ul>
+<li>
+<p><strong>Spec MetaData -- 主要信息</strong></p>
+<ul>
+<li>
+<p>s.name - pod名</p>
+</li>
+<li>
+<p>s.version - pod版本</p>
+</li>
+<li>
+<p>s.summary - pod的简介，别人在<code>pod search</code>你的库之后看到的一句简介</p>
+</li>
+<li>
+<p>s.description - pod的详细描述，必须长于简介</p>
+</li>
+<li>
+<p>s.homepage - pod的主页，一般是github这个repo的主页</p>
+</li>
+<li>
+<p>s.screenshots - pod的截图</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Spec License -- 使用的开源协议</strong></p>
+<ul>
+<li>s.license - 使用Apache还是MIT还是其他协议</li>
+</ul>
+</li>
+<li>
+<p><strong>Author MetaData -- 作者信息</strong></p>
+<ul>
+<li>s.author - pod的作者</li>
+<li>s.authors - pod如果有多个作者</li>
+<li>s.social_media_url - pod作者的一些社交帐号主页</li>
+</ul>
+</li>
+<li>
+<p><strong>Platform Specifics -- 支持的平台和系统版本</strong></p>
+<ul>
+<li>s.platform - pod支持的平台</li>
+</ul>
+<p>如果pod可以在多个平台上使用就设置下面这些的参数</p>
+<ul>
+<li>s.ios.deployment_target</li>
+<li>s.osx.deployment_target</li>
+<li>s.watchos.deployment_target</li>
+<li>s.tvos.deployment_target</li>
+</ul>
+</li>
+<li>
+<p><strong>Source Location -- pod的源地址</strong></p>
+<ul>
+<li>s.source - pod的git源地址</li>
+</ul>
+</li>
+<li>
+<p><strong>Source Code -- pod的源文件</strong></p>
+<ul>
+<li>s.source_files - pod的源文件，可以包含.h .m .swift .cpp .mm这些</li>
+<li>s.public_header_files - 一般就是pod的头文件.h居多</li>
+</ul>
+</li>
+<li>
+<p><strong>Resources -- pod用到的资源文件</strong></p>
+<ul>
+<li>s.resource - 单个资源文件</li>
+<li>s.resources - 多个资源文件用** *这种通配符去匹配</li>
+<li>s.preserve_paths</li>
+</ul>
+</li>
+<li>
+<p><strong>Project Linking -- pod需要的一些依赖</strong></p>
+<ul>
+<li>
+<p>s.framework</p>
+</li>
+<li>
+<p>s.frameworks - 引用到的系统的framework</p>
+</li>
+<li>
+<p>s.library</p>
+</li>
+<li>
+<p>s.libraries - 引用系统的一些tbz文件</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Project Settings -- pod依赖的设置</strong></p>
+<ul>
+<li>s.requires_arc - 环境是arc还是mrc</li>
+<li>s.xcconfig - 对工程的一些设置</li>
+<li>s.dependency - pod引用了一些第三方的库</li>
+</ul>
+</li>
+</ul>
+<p>所以全部写完了的podspec成品是这个样子：</p>
+<figure data-type="image" tabindex="1"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/%E6%9C%89%E6%95%88%E5%88%A9%E7%94%A8Git%E5%92%8CCocoaPods%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BB%A3%E7%A0%81%E5%BA%93/podspec_ZCTouchID.png" alt="ZCTouchID_podspec文件" loading="lazy"></figure>
+<blockquote>
+<p>注意 s.source 这个地方， <code>:tag =&gt; &quot;#{s.version}&quot;</code> 如果podspec这样写，可能在下面的验证步骤会无法通过，所以解决办法是，先把这个地方改成 <code>:branch =&gt; 'develop'</code> 指向开发分支，通过验证之后，再改回s.version就可以。</p>
+</blockquote>
+<h3 id="验证podspec">验证podspec</h3>
+<p>验证命令 在pod目录下</p>
+<pre><code>pod spec lint
+</code></pre>
+<ul>
+<li>--verbose 查看编译详情，清理错误</li>
+<li>--allow-warning 允许警告，为了通过编译</li>
+</ul>
+<p>如果不打算上传到cocoapods，也可以使用下面的命令进行验证，该命令是使用本地的仓库进行验证</p>
+<pre><code>pod lib lint
+</code></pre>
+<h3 id="推送到cocoapods的库">推送到cocoapods的库</h3>
+<h4 id="注册pod帐号">注册pod帐号</h4>
+<p>首先需要在终端注册pod帐号</p>
+<pre><code>pod trunk register [Email] [Name]
+</code></pre>
+<p>例如我注册就使用</p>
+<pre><code>pod trunk register zcillcoder@gmail.com Locke
+</code></pre>
+<p>之后没有意外就会向注册的邮箱发送一封邮件，去确认一波就可以</p>
+<h4 id="提交到cocoapods">提交到cocoapods</h4>
+<p>在项目的master分支上打tag</p>
+<pre><code>git tag 1.0.0
+git push origin 1.0.0
+</code></pre>
+<p>提交到cocoapods的官方spec仓库</p>
+<pre><code>pod trunk push ZCTouchID.podspec
+</code></pre>
+<p>成功了之后，就可以通过<code>pod search</code>命令搜索到自己的库</p>
+<figure data-type="image" tabindex="2"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/%E6%9C%89%E6%95%88%E5%88%A9%E7%94%A8Git%E5%92%8CCocoaPods%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BB%A3%E7%A0%81%E5%BA%93/podsearch_result.png" alt="pod search result" loading="lazy"></figure>
+<h4 id="参考">参考</h4>
+<p><a href="http://www.jianshu.com/p/64db8afb4049">CocoaPods系列 - 提交</a></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%9C%A8repo%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%94%9F%E6%88%90podspec%E6%96%87%E4%BB%B6">在repo目录下生成podspec文件</a></li>
+<li><a href="#%E9%AA%8C%E8%AF%81podspec">验证podspec</a></li>
+<li><a href="#%E6%8E%A8%E9%80%81%E5%88%B0cocoapods%E7%9A%84%E5%BA%93">推送到cocoapods的库</a>
+<ul>
+<li><a href="#%E6%B3%A8%E5%86%8Cpod%E5%B8%90%E5%8F%B7">注册pod帐号</a></li>
+<li><a href="#%E6%8F%90%E4%BA%A4%E5%88%B0cocoapods">提交到cocoapods</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcill.github.io/post/生活是会慢慢变好的，这点我深信不疑/">
+              <h3 class="post-title">
+                生活是会慢慢变好的，这点我深信不疑
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+   ❤ Powered by <a href=\"https://github.com/getgridea/gridea\" target=\"_blank\">Gridea</a> ｜ © 2015 - 本站由 <a href=\"https://github.com/zcill\">@Soda</a> 创建
+  <a class="rss" href="https://zcill.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

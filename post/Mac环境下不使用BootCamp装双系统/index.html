@@ -1,0 +1,243 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mac环境下不使用BootCamp装双系统 | Soda</title>
+<link rel="shortcut icon" href="https://zcill.github.io/favicon.ico?v=1739653835433">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcill.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Mac环境下不使用BootCamp装双系统 | Soda - Atom Feed" href="https://zcill.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-073HWK54DK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-073HWK54DK');
+</script>
+
+    <meta name="description" content="这篇文章早就该发了，不过那会大一下学期，人比较懒，所以搁浅了。前几天给电脑装双系统，准备把教程整理整理，发出来。
+前言
+在Google上搜了不少教程，都是些年份久远的教程，而且使用的boot camp安装双系统。点击下一步之后，我的mac并..." />
+    <meta name="keywords" content="Mac相关" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcill.github.io">
+  <img class="avatar" src="https://zcill.github.io/images/avatar.png?v=1739653835433" alt="">
+  </a>
+  <h1 class="site-title">
+    Soda
+  </h1>
+  <p class="site-description">
+    接近风的地方
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zcill" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/ZcillLocke" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2969293463" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/locker-zcill" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/zcillcoder" target="_blank">
+          <i class="ri-facebook-line"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Mac环境下不使用BootCamp装双系统
+            </h2>
+            <div class="post-info">
+              <span>
+                2015-12-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://zcill.github.io/tag/9SLiKP-LF/" class="post-tag">
+                  # Mac相关
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>这篇文章早就该发了，不过那会大一下学期，人比较懒，所以搁浅了。前几天给电脑装双系统，准备把教程整理整理，发出来。</p>
+<h2 id="前言">前言</h2>
+<p>在Google上搜了不少教程，都是些年份久远的教程，而且使用的boot camp安装双系统。点击下一步之后，我的mac并没有出现和教程上一样的界面，没有让我去划分硬盘。</p>
+<h2 id="准备">准备</h2>
+<p>气急败坏的我，准备使用装windows系统的那套工具开始霸王硬上弓，对，强行分区装双系统。本文章默认您会制作并使用U盘启动盘安装windows，如果小白不太明白的话，稍后我会贴出相应的教程供大家参考。</p>
+<blockquote>
+<p>工具</p>
+</blockquote>
+<ul>
+<li>UltraISO</li>
+<li>windows7镜像(建议使用ISO文件，不使用ghost文件)</li>
+<li>闲置U盘(因为要写启动盘，会把U盘格式化，所以盘内最好不要有有用的东西)</li>
+</ul>
+<h2 id="开搞">开搞</h2>
+<ol>
+<li>
+<p><b>使用UltraISO制作windows7启动盘</b></p>
+<p>详情可以参考这篇文章</p>
+<p><a href="http://jingyan.baidu.com/article/a378c960630e61b329283045.html">使用UltraISO制作U盘启动盘-百度经验</a></p>
+</li>
+<li>
+<p><b>打开你的Mac，进入磁盘工具，对空间进行划分</b></p>
+<p>我的电脑是12版的MacBookAir 128G，所以我分给windows 70G，这个看个人把，看你平常用哪个系统多一点</p>
+</li>
+<li>
+<p><b>分区完了，可以关闭Mac了，关机之后，把启动U盘插入Mac的USB接口，再次开机，听到响声后按住option键，几秒钟后松开</b></p>
+</li>
+<li>
+<p><b>你会进入一个选择界面，选择你的U盘启动盘就好</b></p>
+<p>这个界面，一般会显示三个磁盘，第一个是Mac系统盘，第二个是Recovery系统恢复工具，第三个是启动U盘，这里不一定是按照顺序排列的</p>
+</li>
+<li>
+<p><b>好了，你有看见安装windows的界面么，接下来安装windows就不用多讲了吧</b></p>
+<p>这里注意，选择安装到哪个盘的时候，千万不要选错，选了windows分区之后，如果无法进行下一步，可以先进行格式化操作</p>
+</li>
+</ol>
+<h2 id="完成">完成</h2>
+<pre><code>Question1: 安装完成，怎么打开了还是Mac？
+</code></pre>
+<p>每次想切换系统到windows都是要在开机按住option键的，然后选择windows分区就好，如果觉得麻烦，可以去Mac系统下的偏好设置中去设置。</p>
+<pre><code>Question2: 怎么触摸板每次都要按才有反应，不能轻拍么，双指滑动的功能也没法使用啊？
+</code></pre>
+<p>在windows下安装Boot Camp驱动即可，具体可以去Google或者Baidu下载</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E5%87%86%E5%A4%87">准备</a></li>
+<li><a href="#%E5%BC%80%E6%90%9E">开搞</a></li>
+<li><a href="#%E5%AE%8C%E6%88%90">完成</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+   ❤ Powered by <a href=\"https://github.com/getgridea/gridea\" target=\"_blank\">Gridea</a> ｜ © 2015 - 本站由 <a href=\"https://github.com/zcill\">@Soda</a> 创建
+  <a class="rss" href="https://zcill.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

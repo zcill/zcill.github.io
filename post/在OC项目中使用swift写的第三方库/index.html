@@ -1,0 +1,239 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>在Objective-C项目中使用swift写的第三方库 | Soda</title>
+<link rel="shortcut icon" href="https://zcill.github.io/favicon.ico?v=1739653835433">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zcill.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="在Objective-C项目中使用swift写的第三方库 | Soda - Atom Feed" href="https://zcill.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-073HWK54DK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-073HWK54DK');
+</script>
+
+    <meta name="description" content="无意中发现一个高质量的轻量的第三方库，使用swift写的，并没有Objective-C写的版本，TextFieldEffects。无奈自己没学过swift，想使用这个库就只能去实现一下OC和swift混编了。
+
+更改Defines Modu..." />
+    <meta name="keywords" content="iOS开发" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zcill.github.io">
+  <img class="avatar" src="https://zcill.github.io/images/avatar.png?v=1739653835433" alt="">
+  </a>
+  <h1 class="site-title">
+    Soda
+  </h1>
+  <p class="site-description">
+    接近风的地方
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/zcill" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/ZcillLocke" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.weibo.com/2969293463" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/locker-zcill" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/zcillcoder" target="_blank">
+          <i class="ri-facebook-line"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              在Objective-C项目中使用swift写的第三方库
+            </h2>
+            <div class="post-info">
+              <span>
+                2016-01-23
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://zcill.github.io/tag/TZWPHQCg8a/" class="post-tag">
+                  # iOS开发
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>无意中发现一个高质量的轻量的第三方库，使用swift写的，并没有Objective-C写的版本，<a href="https://github.com/raulriera/TextFieldEffects">TextFieldEffects</a>。无奈自己没学过swift，想使用这个库就只能去实现一下OC和swift混编了。</p>
+<div class="github-widget" data-repo="raulriera/TextFieldEffects"></div>
+<h4 id="更改defines-module">更改Defines Module</h4>
+<p>在Build Settings中改Packing的Defines Module为Yes，这个时候Xcode会默认生成一个(PRODUCT_NAME)-Swift.h，不过这个文件在项目目录是看不见的。(PRODUCT_NAME)是工程名，我的项目名是叫Meizi，那么生成的文件就是Meizi-Swift.h。</p>
+<figure data-type="image" tabindex="1"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/%E5%9C%A8OC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8swift%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/%E6%94%B9Module.png" alt="改Module" loading="lazy"></figure>
+<h4 id="导入product_name-swifth">导入(PRODUCT_NAME)-Swift.h</h4>
+<p>进入需要使用swift第三方库的类，导入-Swift.h文件</p>
+<pre><code>#import &quot;Meizi-Swift.h&quot;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/%E5%9C%A8OC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8swift%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/%E6%8A%A5%E9%94%99.png" alt="报错" loading="lazy"></figure>
+<h4 id="创建桥接文件">创建桥接文件</h4>
+<p>这个时候可能会报错，因为工程中没有bridge桥接文件。这个时候要去创建一个swift文件了，可以创建一个test.swift文件</p>
+<figure data-type="image" tabindex="3"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/%E5%9C%A8OC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8swift%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/%E5%88%9B%E5%BB%BAswift%E6%96%87%E4%BB%B6.png" alt="创建swift文件" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/%E5%9C%A8OC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8swift%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/%E5%88%9B%E5%BB%BA%E6%A1%A5%E6%8E%A5%E6%96%87%E4%BB%B6.png" alt="创建桥接文件" loading="lazy"></figure>
+<p>创建完了记得点击Create Bridging Header，Xcode会默认帮你创建好桥接文件。我们需要的就是这个桥接文件，这个时候可以把test.swift文件删除了。</p>
+<h4 id="导入swift写的第三方库">导入swift写的第三方库</h4>
+<figure data-type="image" tabindex="5"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/%E5%9C%A8OC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8swift%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/%E6%8B%96%E5%85%A5swift%E5%BA%93.png" alt="拖入swift库" loading="lazy"></figure>
+<p>这个时候把需要使用的库文件拖入工程就可以直接调用。</p>
+<h4 id="大功告成">大功告成</h4>
+<figure data-type="image" tabindex="6"><img src="http://7xq5gj.com1.z0.glb.clouddn.com/%E5%9C%A8OC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8swift%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/%E6%AD%A3%E5%B8%B8%E4%BD%BF%E7%94%A8.png" alt="正常使用" loading="lazy"></figure>
+<p>如果这个swift库不是<code>only for swift</code>的话，也可以使用Objective-C的方法去调用的。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%9B%B4%E6%94%B9defines-module">更改Defines Module</a></li>
+<li><a href="#%E5%AF%BC%E5%85%A5product_name-swifth">导入(PRODUCT_NAME)-Swift.h</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E6%A1%A5%E6%8E%A5%E6%96%87%E4%BB%B6">创建桥接文件</a></li>
+<li><a href="#%E5%AF%BC%E5%85%A5swift%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93">导入swift写的第三方库</a></li>
+<li><a href="#%E5%A4%A7%E5%8A%9F%E5%91%8A%E6%88%90">大功告成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zcill.github.io/post/回顾2015，展望2016/">
+              <h3 class="post-title">
+                回顾2015，展望2016
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+   ❤ Powered by <a href=\"https://github.com/getgridea/gridea\" target=\"_blank\">Gridea</a> ｜ © 2015 - 本站由 <a href=\"https://github.com/zcill\">@Soda</a> 创建
+  <a class="rss" href="https://zcill.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
